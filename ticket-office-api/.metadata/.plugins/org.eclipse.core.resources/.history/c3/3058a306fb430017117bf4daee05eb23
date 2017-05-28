@@ -1,0 +1,8 @@
+package io.gabbm.ticket_office.api.entity;
+
+
+@Entity
+public class Activity {
+
+	
+}

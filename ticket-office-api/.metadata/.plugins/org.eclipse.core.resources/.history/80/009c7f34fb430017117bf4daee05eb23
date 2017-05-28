@@ -1,0 +1,5 @@
+package io.gabbm.ticket_office.api.repository;
+
+public class ActivityRepository {
+
+}
