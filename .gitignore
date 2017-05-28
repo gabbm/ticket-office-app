@@ -1,0 +1,11 @@
+### Custom ###
+*.DS_Store
+RemoteSystemsTempFiles/
+ticket-office-api/.apt_generated
+ticket-office-api/.classpath
+ticket-office-api/.factorypath
+ticket-office-api/.metadata
+ticket-office-api/.recomenders
+ticket-office-api/.project
+ticket-office-api/.settings
+ticket-office-api/.springBeans
