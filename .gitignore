@@ -1,12 +1,12 @@
 ### Custom ###
 .DS_Store
 RemoteSystemsTempFiles
-.apt_generated
-.classpath
-.factorypath
-.metadata
-.recomenders
-.project
-.settings
-.springBeans
+.apt_generated/
+.classpath/
+.factorypath/
+.metadata/
+.recomenders/
+.project/
+.settings/
+.springBeans/
 build/
