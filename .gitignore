@@ -1,6 +1,6 @@
 ### Custom ###
 *.DS_Store
-RemoteSystemsTempFiles
+RemoteSystemsTempFiles/**
 ticket-office-api/.apt_generated
 ticket-office-api/.classpath
 ticket-office-api/.factorypath
