@@ -1,0 +1,54 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	// Dependencies for RESTful Web Services
+	compile('org.springframework.boot:spring-boot-starter-web')
+	
+	// Dependencies for Security
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.security.oauth:spring-security-oauth2')
+
+	// Dependencies for Data Persistence
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	runtime('mysql:mysql-connector-java')
+	
+	// View Dependencies
+	compile('javax.servlet:jstl')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
+	
+	// JSON Databind
+	compile('com.fasterxml.jackson.core:jackson-databind')
+	testCompile('com.jayway.jsonpath:json-path')	
+	testCompile('com.jayway.jsonpath:json-path-assert')	
+	
+	// Dependencies for Unit Testing
+	testCompile('org.springframework.boot:spring-boot-starter-test')	
+}
