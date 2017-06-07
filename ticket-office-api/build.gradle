@@ -49,9 +49,6 @@ dependencies {
 	// Dependencies for Guava Cache Management Support
 	compile('org.springframework:spring-context-support')
 	compile('com.google.guava:guava:18.0')
-	
-	// Dependencies for Actuator Production Monitoring and Management
-	compile('org.springframework.boot:spring-boot-starter-actuator')
 
 	// Validation
 	compile('org.springframework.boot:spring-boot-starter-validation')
@@ -72,4 +69,8 @@ dependencies {
 	// JERSEY & JAX
 	compile('org.apache.cxf:cxf-spring-boot-starter-jaxrs:3.1.11')
 	compile('org.springframework.boot:spring-boot-starter-jersey')
+	
+	// Swagger
+	compile('io.springfox:springfox-swagger2:2.6.1')
+	compile('io.springfox:springfox-swagger-ui:2.6.1')
 }

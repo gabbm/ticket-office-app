@@ -24,6 +24,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
@@ -189,6 +190,14 @@ public class OAuth2ServerConfiguration {
         @Bean
         protected AuthorizationCodeServices authorizationCodeServices() {
         	return new JdbcAuthorizationCodeServices(dataSource);
+        }
+        
+        /*
+         * Enable check token access for anyone is authenticated
+         */
+        @Override
+        public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+           oauthServer.checkTokenAccess("isAuthenticated()");    
         }
         
         /*

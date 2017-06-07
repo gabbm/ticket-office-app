@@ -24,6 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import io.gabbm.ticket_office.util.Constants;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 public class Activity {
@@ -34,11 +35,13 @@ public class Activity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
+	@ApiModelProperty(notes = "The database generated product ID")
 	public Long id;
 		
 	// Date format: yyyy-MM-dd'T'HH:mm:ss.SSSZ, e.g. "2000-10-31T01:30:00.000-05:00"
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	@Column(name = "start_date", nullable = false)
+	@ApiModelProperty(notes = "The database generated product ID", required = true)
 	public Date startDate;
 	
 	@DateTimeFormat(iso = ISO.DATE_TIME)
