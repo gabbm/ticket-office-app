@@ -15,6 +15,9 @@ import org.springframework.security.core.GrantedAuthority;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Roles entity for login actions and OAuth2 authentication/authorization
+ */
 @Entity
 public class Roles implements GrantedAuthority {
 

@@ -1,5 +1,6 @@
 package io.gabbm.ticket_office.oauth2.provider.entity;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,8 +18,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Users entity for login actions and OAuth2 authentication/authorization
+ */
+/*
+ * Needs to be Serializable for working with JdbcTokenStore
+ */
 @Entity
-public class Users {
+public class Users implements Serializable {
+
+	private static final long serialVersionUID = -8088094424877206165L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

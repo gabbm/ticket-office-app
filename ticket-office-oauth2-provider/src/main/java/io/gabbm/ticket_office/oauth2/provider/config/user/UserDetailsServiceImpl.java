@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import io.gabbm.ticket_office.oauth2.provider.entity.Users;
 import io.gabbm.ticket_office.oauth2.provider.repository.UsersRepository;
 
+/**
+ * Define User repository and custom user details and validation
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -31,9 +34,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return new UserRepositoryUserDetails(user);
 	}
 
+	/**
+	 * Brings custom Users entity fields to UserDetails spring security object
+	 */
 	private final static class UserRepositoryUserDetails extends Users implements UserDetails {
-
-		private static final long serialVersionUID = 1L;
 
 		private UserRepositoryUserDetails(Users user) {
 			super(user);

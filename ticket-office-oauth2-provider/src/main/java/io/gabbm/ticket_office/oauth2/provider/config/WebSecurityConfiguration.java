@@ -16,13 +16,11 @@ import io.gabbm.ticket_office.oauth2.provider.config.user.AccountAuthenticationP
 import io.gabbm.ticket_office.oauth2.provider.config.user.UserDetailsServiceImpl;
 
 /*
- * 	So in before release 1.5.x OAuth2 resource server order was 3 which had higher priority then WebSecurityConfigurerAdapter.
-
-	After release 1.5.x OAuth2 resource server order is set to SecurityProperties.ACCESS_OVERRIDE_ORDER - 1 (it is Integer.MAX_VALUE - 8 I think) which has now definitely lower priority then basic WebSecurityConfigurerAdapter order.
-
-	That's why login page appears for me after migrate from 1.4.x to 1.5.x
-
-	So, more elegant and java-like style solution is to set @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER) on WebSecurityConfigurerAdapter class
+ * So in before release 1.5.x OAuth2 resource server order was 3 which had higher priority then WebSecurityConfigurerAdapter.
+ * After release 1.5.x OAuth2 resource server order is set to SecurityProperties.ACCESS_OVERRIDE_ORDER - 1 (it is Integer.MAX_VALUE - 8 I think) which has now definitely lower priority then basic WebSecurityConfigurerAdapter order.
+ * That's why login page appears for me after migrate from 1.4.x to 1.5.x
+ * 
+ * So, more elegant and java-like style solution is to set @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER) on WebSecurityConfigurerAdapter class
  */
 
 @Configuration
@@ -30,9 +28,16 @@ import io.gabbm.ticket_office.oauth2.provider.config.user.UserDetailsServiceImpl
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	/*
+     * A Spring Security UserDetailsService implementation based upon the
+     * User entity model.
+     */
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	
+	/*
+	 * Custom authentication validations with custom password encoder
+	 */
     @Autowired
     private AccountAuthenticationProvider accountAuthenticationProvider;
 	

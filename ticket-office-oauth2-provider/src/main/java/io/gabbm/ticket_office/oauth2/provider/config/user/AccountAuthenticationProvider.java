@@ -1,7 +1,5 @@
 package io.gabbm.ticket_office.oauth2.provider.config.user;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,31 +9,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * Custom authentication validations with custom password encoder
+ */
 @Component
 public class AccountAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider{
 
-    /**
-     * The Logger for this class.
-     */
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    /**
+    /*
      * A Spring Security UserDetailsService implementation based upon the
-     * Account entity model.
+     * User entity model.
      */
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    /**
+    /*
      * A PasswordEncoder instance to hash clear test password values.
      */
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /*
+     * Custom authentication checks
+     */
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken token) throws AuthenticationException {
-        logger.debug("> additionalAuthenticationChecks");
-
         if (token.getCredentials() == null || userDetails.getPassword() == null) {
             throw new BadCredentialsException("Credentials may not be null.");
         }
@@ -43,17 +40,15 @@ public class AccountAuthenticationProvider extends AbstractUserDetailsAuthentica
         if (!passwordEncoder.matches((String) token.getCredentials(), userDetails.getPassword())) {
             throw new BadCredentialsException("Invalid credentials.");
         }
-
-        logger.debug("< additionalAuthenticationChecks");
     }
 
+    /*
+     * Custom user provider from repository
+     */
     @Override
     protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken token) throws AuthenticationException {
-        logger.debug("> retrieveUser");
-
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-        logger.debug("< retrieveUser");
         return userDetails;
     }
 

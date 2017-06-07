@@ -8,6 +8,7 @@ import io.gabbm.ticket_office.oauth2.provider.entity.Users;
 import io.gabbm.ticket_office.oauth2.provider.repository.UsersRepository;
 
 @RestController
+@RequestMapping("/api/admin")
 public class UsersController {
 
 	private final UsersRepository usersRepository;
