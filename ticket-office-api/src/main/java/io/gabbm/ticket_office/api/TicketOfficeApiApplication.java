@@ -2,6 +2,7 @@ package io.gabbm.ticket_office.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.guava.GuavaCacheManager;
@@ -13,6 +14,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableCaching
 @EnableAsync
+@EnableZuulProxy
+@EnableOAuth2Sso
 public class TicketOfficeApiApplication {
 	
 	/**
