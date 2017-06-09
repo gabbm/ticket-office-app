@@ -14,8 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableCaching
 @EnableAsync
-@EnableZuulProxy
-@EnableOAuth2Sso
 public class TicketOfficeApiApplication {
 	
 	/**

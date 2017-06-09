@@ -69,11 +69,23 @@ dependencies {
 	// JERSEY & JAX
 	compile('org.apache.cxf:cxf-spring-boot-starter-jaxrs:3.1.11')
 	compile('org.springframework.boot:spring-boot-starter-jersey')
+	compile('org.springframework:spring-oxm')
+	compile('com.sun.jersey.contribs:jersey-apache-client:1.19')
+	compile('com.sun.jersey:jersey-client:1.19')
+	compile('com.sun.jersey:jersey-json:1.19')
 	
 	// Swagger
 	compile('io.springfox:springfox-swagger2:2.6.1')
 	compile('io.springfox:springfox-swagger-ui:2.6.1')
 	
-	// Reverse proxy
-	compile('org.springframework.cloud:spring-cloud-starter-zuul')
+	// HttpClient
+	compile('org.apache.httpcomponents:httpclient')
+	
+	// Quartz
+	compile('org.quartz-scheduler:quartz:2.2.1') {
+		exclude(module: 'c3p0')
+	}
+	
+	// Custom library
+	compile fileTree(dir: 'libs', include: '*.jar')
 }
